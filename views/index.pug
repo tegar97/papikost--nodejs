@@ -1,9 +1,213 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title #{title}
-    body
-    h1 tes 
-    h2 tes2
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='Description', content='Papy Kos adalah Tempat Pencari kos')
+    link(rel='stylesheet', href='/css/mini-main.css')
+    link(rel='stylesheet', href='/library//bootstrap-4/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://unpkg.com/swiper/css/swiper.min.css')
+    link(href='https://unpkg.com/aos@2.3.1/dist/aos.css', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,500;1,300;1,700&display=swap', rel='stylesheet')
+    title PapyKos | #{title}
+  body
+    nav.nav-modify.mt-5.shadow
+      .container
+        .logo
+          a(href='index.html') PAPIKOST.COM
+        #mainListDiv.main_list
+          ul.navlinks
+            li
+              a.nav-item(href='#') About
+            li
+              a.nav-item(href='#') Portfolio
+            li
+              a.nav-item(href='#') Services
+            li
+              a.nav-item.btn-nav(href='#') Login
+        span.navTrigger
+          i
+          i
+          i
+    header.header
+      .header__text-box
+        .heading-primary
+          span.heading-primary--main Cari Kos Dekat Kampus Mu ? 
+          span.heading-primary--sub Cari Disini Aja ! 
+        .header__box
+          form(action='')
+            label.sr-only(for='search') Cari kampus Atau Alamat
+            input#search.header__box--search(type='text', placeholder='Cari Kampus atau alamat')
+            button.header__box--button Cari
+    main
+      section.section-university-city.mt-5
+        .container
+          .text-box
+            h2.heading-secondary Dimana Kampus Kamu ?
+          // versi screen lg and xl
+          .swiper-container.d-none.d-sm-none.d-md-none.d-lg-block.d-xl-block(data-aos='fade-up')
+            .swiper-wrapper
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/ugm.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  UGM 
+                    span.text-center.card__text-box--city Jawa barat
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/itb.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  ITB 
+                    span.text-center.card__text-box--city Kota bandung
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/itbJatinangor.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  ITB 
+                    span.text-center.card__text-box--city Sumedang,jatinganor
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/ui.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  UI 
+                    span.text-center.card__text-box--city Kota Depok
+            .swiper-button-next
+            .swiper-button-prev
+          // versi screen sm and md
+          .swiper-container-mobile.d-lg-none.d-xl-none(data-aos='fade-up')
+            .swiper-wrapper
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/ugm.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  UGM 
+                    span.text-center.card__text-box--city Jawa barat
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/itb.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  ITB 
+                    span.text-center.card__text-box--city Kota bandung
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/itbJatinangor.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  ITB 
+                    span.text-center.card__text-box--city Sumedang,jatinganor
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/ui.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  UI 
+                    span.text-center.card__text-box--city Kota Depok
+            .swiper-button-next
+            .swiper-button-prev
+          .text-box
+            h2.heading-secondary Atau Kota Kamu ?
+          // versi screen lg and xl
+          .swiper-container.d-none.d-sm-none.d-md-none.d-lg-block.d-xl-block(data-aos='fade-up')
+            .swiper-wrapper
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/ugm.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  UGM 
+                    span.text-center.card__text-box--city Jawa barat
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/itb.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  ITB 
+                    span.text-center.card__text-box--city Kota bandung
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/itbJatinangor.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  ITB 
+                    span.text-center.card__text-box--city Sumedang,jatinganor
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/ui.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  UI 
+                    span.text-center.card__text-box--city Kota Depok
+            .swiper-button-next
+            .swiper-button-prev
+          // versi screen sm and md
+          .swiper-container-mobile.d-lg-none.d-xl-none(data-aos='fade-up')
+            .swiper-wrapper
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/ugm.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  UGM 
+                    span.text-center.card__text-box--city Jawa barat
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/itb.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  ITB 
+                    span.text-center.card__text-box--city Kota bandung
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/itbJatinangor.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  ITB 
+                    span.text-center.card__text-box--city Sumedang,jatinganor
+              .swiper-slide.pl-5
+                .card
+                  img.card-img-top.card__img-type-2(src='./assets/ui.jpg', alt='ITB')
+                  .card__text-box
+                    h3.card__text-box--title-2  UI 
+                    span.text-center.card__text-box--city Kota Depok
+            .swiper-button-next
+            .swiper-button-prev
+      section.section-all-kost.mb-5
+        .container
+          .text-box.text-center
+            h2.heading-secondary Mau Lihat semua kos yang ada di Papy Kos ?
+          .row.u-margin-top-big
+            .col-md-5.col-lg-6.col-xl-6
+              h3.heading-tertiary
+                | tempat kost kita tersebar di 100 kota dan 32 provinsi Diseluruh
+                | Indonesia
+              p.paragraph.mt-4
+                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+                | dolorem atque aperiam vitae debitis porro totam fugiat, non quis ducimus explicabo deserunt
+                | iusto perspiciatis soluta ex natus dolorum nam voluptatem.
+              a.btn-text(href='area.html') Yuk Lihat Lihat Kost-kostnya → 
+            .col-md-6.col-lg-5.col-xl-6.d-none.d-sm-none.d-md-block
+              .composition
+                img.composition__photo.composition__photo--p1(src='./assets/bandung.jpg', alt='Photo 1')
+                img.composition__photo.composition__photo--p2(src='./assets//jakarta.jpg', alt='Photo 2')
+                img.composition__photo.composition__photo--p3(src='./assets/jogja.jpg', alt='Photo 3')
+    footer.footer.u-margin-top-big
+      .row
+        .col-lg-6
+          .footer__navigation
+            ul.footer__list
+              li.footer__item
+                a.footer__link(href='#') Company
+              li.footer__item
+                a.footer__link(href='#') Contact us
+              li.footer__item
+                a.footer__link(href='#') Carrers
+              li.footer__item
+                a.footer__link(href='#') Privacy policy
+              li.footer__item
+                a.footer__link(href='#') Terms
+        .col-lg-6
+          p.footer__copyright
+            | Built my 
+            a.footer__lnk(href='#') Tegar Akmal
+            |  ,find my in 
+            a.footer__link(href='#') Github,lorem
+    script(src='./library/jquery/jquery-3.5.1.min.js')
+    script(src='https://unpkg.com/swiper/js/swiper.min.js')
+    script(src='./js/main.js')
+    script(src='./library//bootstrap-4/js/bootstrap.min.js')
+    script(src='https://unpkg.com/aos@2.3.1/dist/aos.js')
+    script.
+      AOS.init();
+    script.
+    script.

@@ -1,0 +1,56 @@
+extends base
+
+
+block content
+ main
+  section.section-all-kost
+    .container
+      .login-form.mt-5
+        .row.mt-5
+          .col-lg-5
+            form.form(action='')
+              h1.heading-secondary Sudah Punya Akun ? 
+              h2.heading-tertiary.mt-2 Login dengan Email dan Password Kamu
+              .form__group
+                input#name.form__input(type='email', placeholder='Email')
+                label.form__label(for='email') Pastikan Email Asli yah
+              .form__group
+                input#password.password.form__input(type='password', placeholder='Password ')
+                label.form__label(for='email') Password
+              .form__radio-group
+                input#large.form__radio-input(type='checkbox', name='size', onclick="showPassword('password')")
+                label.form__radio-label(for='large')
+                  span.form__radio-button
+                  |                                     SHOW PASSWORD
+              .form__group.u-marginm.mt-5
+                button.btn.primary-btn.medium-font-size.pb-3.w-100(type='submit') LOGIN 
+          .u-margin-left-big.col-lg-5.border-left
+            form.form(action='')
+              h1.heading-secondary Atau belum punya akun  ? 
+              h2.heading-tertiary.mt-2 Buruan Daftar
+              .form__group
+                input#name.form__input(type='text', placeholder='Nama lengkap Kamu')
+                label.form__label(for='email') Full name
+              .form__group
+                input#nomer.form__input(type='number', placeholder='Number Whatsapp/to telp kamu')
+                label.form__label(for='email')
+                  span.text-danger PASTIKAN NOMER KAMU ! BUKAN NOMER MANTAN
+              .form__group
+                input#name.form__input(type='email', placeholder='Email Kamu')
+                label.form__label(for='email') pastikan email aktif
+              .form__group
+                input#passwordRegister.password.form__input(type='password', placeholder='Email')
+                label.form__label(for='email') Password
+              .form__group
+                input.password.form__input(type='password', placeholder='Password ')
+                label.form__label(for='email') Password Confirm
+              .form__radio-group
+                input#showPasswordRegister.form__radio-input(type='checkbox', name='size', onclick="showPassword('passwordRegister')")
+                label.form__radio-label(for='showPasswordRegister')
+                  span.form__radio-button
+                  |                                     SHOW PASSWORD
+              .form__group.u-margin.mt-5
+                button.btn.primary-btn.medium-font-size.pb-3.w-100(type='submit') REGISTER 
+
+        
+
