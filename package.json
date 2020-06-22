@@ -1,0 +1,22 @@
+{
+  "name": "papikost",
+  "version": "1.0.0",
+  "description": "backend + serverside papikost",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=production nodemon app",
+    "dev": "cross-env NODE_ENV=development nodemon app"
+  },
+  "author": "Muhammad Tegar Akmal",
+  "license": "ISC",
+  "dependencies": {
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.19",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "pug": "^3.0.0"
+  }
+}
