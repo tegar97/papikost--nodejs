@@ -32,23 +32,22 @@ block content
                 input#name.form__input(type='text', placeholder='Nama lengkap Kamu')
                 label.form__label(for='email') Full name
               .form__group
-                input#nomer.form__input(type='number', placeholder='Number Whatsapp/to telp kamu')
-                label.form__label(for='email')
+                input#nomer.form__input(name:notelp,type='number', placeholder='Number Whatsapp/to telp kamu')
+                label.form__label(for='notelp')
                   span.text-danger PASTIKAN NOMER KAMU ! BUKAN NOMER MANTAN
               .form__group
                 input#name.form__input(type='email', placeholder='Email Kamu')
                 label.form__label(for='email') pastikan email aktif
               .form__group
-                input#passwordRegister.password.form__input(type='password', placeholder='Email')
-                label.form__label(for='email') Password
+                input#passwordRegister.password.form__input(type='password', placeholder='Password')
+                label.form__label(for='password') Password
               .form__group
-                input.password.form__input(type='password', placeholder='Password ')
-                label.form__label(for='email') Password Confirm
+                input.password.form__input(type='password', placeholder='Password Confirm ')
+                label.form__label(for='password') Password Confirm
               .form__radio-group
                 input#showPasswordRegister.form__radio-input(type='checkbox', name='size', onclick="showPassword('passwordRegister')")
                 label.form__radio-label(for='showPasswordRegister')
-                  span.form__radio-button
-                  |                                     SHOW PASSWORD
+        
               .form__group.u-margin.mt-5
                 button.btn.primary-btn.medium-font-size.pb-3.w-100(type='submit') REGISTER 
 

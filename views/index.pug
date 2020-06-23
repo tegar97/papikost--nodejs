@@ -109,28 +109,12 @@ html(lang='en')
             .swiper-wrapper
               .swiper-slide.pl-5
                 .card
-                  img.card-img-top.card__img-type-2(src='./assets/ugm.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  UGM 
-                    span.text-center.card__text-box--city Jawa barat
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/itb.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  ITB 
-                    span.text-center.card__text-box--city Kota bandung
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/itbJatinangor.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  ITB 
-                    span.text-center.card__text-box--city Sumedang,jatinganor
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/ui.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  UI 
-                    span.text-center.card__text-box--city Kota Depok
+                  a(href="http://localhost:3000/area-detail")
+                    img.card-img-top.card__img-type-2(src='./assets/bandung.jpg', alt='ITB')
+                    .card__text-box
+                      h3.card__text-box--title-2  Bandung 
+                      span.text-center.card__text-box--city Jawa barat
+              
             .swiper-button-next
             .swiper-button-prev
           // versi screen sm and md
@@ -175,7 +159,7 @@ html(lang='en')
                 | Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
                 | dolorem atque aperiam vitae debitis porro totam fugiat, non quis ducimus explicabo deserunt
                 | iusto perspiciatis soluta ex natus dolorum nam voluptatem.
-              a.btn-text(href='area.html') Yuk Lihat Lihat Kost-kostnya → 
+              a.btn-text(href='http://localhost:3000/area') Yuk Lihat Lihat Kost-kostnya → 
             .col-md-6.col-lg-5.col-xl-6.d-none.d-sm-none.d-md-block
               .composition
                 img.composition__photo.composition__photo--p1(src='./assets/bandung.jpg', alt='Photo 1')

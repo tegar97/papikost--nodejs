@@ -37,6 +37,10 @@ const PORT = process.env.PORT || 5000
 
 //Routes
 app.use('/',require('./route/viewRouter'))
+app.use('/api/v1/users',require('./route/userRouter'))
+app.all('*',(req,res) => {
+    res.send('404')
+})
 
 
 app.listen(PORT,console.log(`SERVER RUNNING IN ${process.env.NODE_ENV} made on port ${PORT}`))

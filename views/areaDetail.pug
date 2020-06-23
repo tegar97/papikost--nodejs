@@ -21,86 +21,34 @@ block content
               .col-lg-12
                 .card
                   .row.mt-5
-                    .col-lg-6
-                      img.card__img-type-3(src='./assets/kost1.jpg', alt='')
-                    .col-lg-5
-                      .card__room--lbl
-                        label.card__room--lbl-genreRuangan Booking Langsung 
-                        span.pl-3.pr-3 |
-                        label.card__room--lbl-infoRuangan.card__room--lbl-infoRuangan--blue Pria
-                      .card__room--title
-                        a(href='#')
-                          h3.card__room--title-main KOST UDIN HOUSE JOGJA 
-                      .card__room-info
-                        i.card__room-info--icon.icon-basic-map.text-success
-                        span.card__room-info--area
-                          i.fas.fa-map-marker-alt
-                          |  Jogja
-                        br
-                        span.card--room-info--area-detail
-                          | K.Mandi Dalam | free wifi | akses 24jam
-                      .row
-                        .col-lg-6
-                          .u-margin-top-big
-                            i.far.fa-star
-                            |  4.5
-                        .col-lg-6
-                          .u-margin-top-big
-                            h4 Rp 2.400.000 / bulan
-              .col-lg-12
-                .card
-                  .row.mt-5
-                    .col-lg-6
-                      img.card__img-type-3(src='./assets/kost2.jpg', alt='')
-                    .col-lg-5
-                      .card__room--lbl
-                        label.card__room--lbl-genreRuangan Booking Langsung 
-                        span.pl-3.pr-3 |
-                        label.card__room--lbl-infoRuangan.card__room--lbl-infoRuangan--blue Pria
-                      .card__room--title
-                        a(href='#')
-                          h3.card__room--title-main KOST UDIN HOUSE JOGJA 
-                      .card__room-info
-                        i.card__room-info--icon.icon-basic-map.text-success
-                        span.card__room-info--area Jogja
-                        br
-                        span.card--room-info--area-detail
-                          | K.Mandi Dalam | free wifi | akses 24jam
-                      .row
-                        .col-lg-6
-                          .card__room--star.u-margin-top-big
-                            i.icon-basic-star  
-                            | 4.5
-                        .col-lg-6
-                          .card__room--star.u-margin-top-big
-                            h4 Rp 2.400.000 / bulan
-              .col-lg-12
-                .card
-                  .row.mt-5
-                    .col-lg-6
-                      img.card__img-type-3(src='./assets/kost3.jpg', alt='')
-                    .col-lg-5
-                      .card__room--lbl
-                        label.card__room--lbl-genreRuangan Booking Langsung 
-                        span.pl-3.pr-3 |
-                        label.card__room--lbl-infoRuangan.card__room--lbl-infoRuangan--blue Pria
-                      .card__room--title
-                        a(href='#')
-                          h3.card__room--title-main KOST UDIN HOUSE JOGJA 
-                      .card__room-info
-                        i.card__room-info--icon.icon-basic-map.text-success
-                        span.card__room-info--area Jogja
-                        br
-                        span.card--room-info--area-detail
-                          | K.Mandi Dalam | free wifi | akses 24jam
-                      .row
-                        .col-lg-6
-                          .card__room--star.u-margin-top-big
-                            i.icon-basic-star  
-                            | 4.5
-                        .col-lg-6
-                          .card__room--star.u-margin-top-big
-                            h4 Rp 2.400.000 / bulan
+                   a(href="kost/kost-udin")
+                      .col-lg-6
+                        img.card__img-type-3(src='./assets/kost1.jpg', alt='')
+                      .col-lg-5
+                        .card__room--lbl
+                          label.card__room--lbl-genreRuangan Booking Langsung 
+                          span.pl-3.pr-3 |
+                          label.card__room--lbl-infoRuangan.card__room--lbl-infoRuangan--blue Pria
+                        .card__room--title
+                          a(href='kost/kost-udin')
+                            h3.card__room--title-main(style="cursor : pointer") KOST UDIN HOUSE JOGJA 
+                        .card__room-info
+                          i.card__room-info--icon.icon-basic-map.text-success
+                          span.card__room-info--area
+                            i.fas.fa-map-marker-alt
+                            |  Jogja
+                          br
+                          span.card--room-info--area-detail
+                            | K.Mandi Dalam | free wifi | akses 24jam
+                        .row
+                          .col-lg-6
+                            .u-margin-top-big
+                              i.far.fa-star
+                              |  4.5
+                          .col-lg-6
+                            .u-margin-top-big
+                              h4 Rp 2.400.000 / bulan
+            
             nav(aria-label='Page navigation example')
               ul.pagination.pagination-lg.mt-5
                 li.page-item
@@ -116,3 +64,5 @@ block content
           .d-sm-none.d-md-none.d-lg-block.col-lg-6.mt-5
             #map(style='width: 600px; height: 700px;')
         .row
+
+         script(src='/js/mapbox.js')

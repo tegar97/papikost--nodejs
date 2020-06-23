@@ -1,5 +1,8 @@
 extends base
-
+block append head
+ 
+  script(src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet')
 
 block content
     main
@@ -8,13 +11,13 @@ block content
           .container
             .row
               .col-lg-8(data-aos='zoom-in')
-                img(src='./assets/kost1.jpg', alt='gambar 1', width='752', height='501')
+                img(src='/assets/kost1.jpg', alt='gambar 1', width='752', height='501')
               .col-lg-4(data-aos='zoom-in')
                 .row
                   .col-lg-12.pl-5
-                    img(src='./assets/kost2.jpg', alt='gambar 2', width='372', height='248')
+                    img(src='/assets/kost2.jpg', alt='gambar 2', width='372', height='248')
                   .col-lg-12.pl-5.pt-3
-                    img(src='./assets/kost3.jpg', alt='gambar 3', width='372', height='248')
+                    img(src='/assets/kost3.jpg', alt='gambar 3', width='372', height='248')
         .container.mt-5
           h1.heading-secondary(data-aos='fade-up') KOST AGUNG SLAMET
           .row
@@ -50,87 +53,87 @@ block content
                     p.pl-3.medium-font-size 3x4
                 #nav-lokasi.tab-pane.fade(role='tabpanel', aria-labelledby='nav-contact-tab')
                   .row
-                    #map(style='width: 1000px !important; height: 700px;')
+                    #map(style='width: 100% !important; height: 100%;')
                 #nav-maps.tab-pane.fade(role='tabpanel', aria-labelledby='nav-contact-tab')
                   .row.p-3
                     .col-lg-4.pb-5
                       p.medium-font-size Kebersihan
                       .row.ml-3
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                     .col-lg-4.pb-5
                       p.medium-font-size Keamanan
                       .row.ml-3
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                     .col-lg-4.pb-5
                       p.medium-font-size Kebersihan
                       .row.ml-3
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--inactive
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                     .col-lg-4.pb-5
                       p.medium-font-size Kebersihan
                       .row.ml-3
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                     .col-lg-4.pb-5
                       p.medium-font-size Kebersihan
                       .row.ml-3
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                     .col-lg-4.pb-5
                       p.medium-font-size Kebersihan
                       .row.ml-3
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                         svg.reviews__star.reviews__star--active
-                          use(xlink:href='./assets/icons.svg#icon-star')
+                          use(xlink:href='/assets/icons.svg#icon-star')
                   .row.p-5
                     .card
                       h1 REVIEW BY USER...On build
@@ -161,7 +164,7 @@ block content
                   .row
                     .col-lg-12
                       button.w-100.btn.primary-btn ORDER NOW
-    
+            script(src='/js/mapbox.js')
 
 
     
