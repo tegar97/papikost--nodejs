@@ -34,14 +34,16 @@ const createSendToken = (user,statusCode,res) => {
             }
         })
 }
-exports.signup = catchAsync(async(req,res) => {
+exports.signup = catchAsync(async(req,res,next) => {
         //1 membuat huruf random debgab croyto
         const verifyToken = crypto.randomBytes(32).toString('hex')
         //2.Menecrypt huruf tadi dengan sha256 untuk disimpan ke database
         const emailVerifyToken  = crypto.createHash('sha256').update(verifyToken).digest('hex')
         //set masa aktif token 
         const emailVerifyExpires = Date.now() + 10 * 60 * 1000 //10 menit
-    
+        if(!req.body.name && !req.body.email && !req.body.password || !req.body.passwordConfirm || !req.body.notelp) {
+            return next(new AppError('Please provide field',400))
+        }
 
         const newUser = await User.create({
             name : req.body.name,
@@ -52,6 +54,7 @@ exports.signup = catchAsync(async(req,res) => {
             emailVerifyToken : emailVerifyToken,
             emailVerifyExpires : emailVerifyExpires
         })
+       
         const url  =`${req.protocol}://${req.get("host")}/users/verifyEmail/${verifyToken}`
         await new Email(newUser,url).sendWelcome()
         createSendToken(newUser,201,res)

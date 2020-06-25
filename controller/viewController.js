@@ -1,3 +1,5 @@
+const City = require('./../models/cityModels')
+
 exports.getLanding = async(req,res) => {
     res.status(200).render('index',{
         title : 'TEMPAT PENCARIAN KOST',
@@ -6,8 +8,12 @@ exports.getLanding = async(req,res) => {
 }
 
 exports.getArea = async(req,res) => {
+    const cityData = await City.find()
+    
     res.status(200).render('area',{
         title : 'AREA TERSEDIA',
+        cityData
+        
      
     })
 }

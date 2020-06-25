@@ -6,7 +6,7 @@ const sharp = require('sharp')
 const path = require('path')
 const AppError = require('./../utils/appError')
 const fs = require('fs-extra')
-
+const crypto = require('crypto')
 const multerStorage = multer.memoryStorage()
 
 const multerFilter = (req,file,cb)  =>{
@@ -26,7 +26,7 @@ exports.uploadUserPhoto = upload.single('image')
 
 exports.resizePhoto = catchAsync(async(req,res,next) => {
     if(!req.file) return next();
-    req.file.filename = `city-${req.params.id}-${Date.now()}.jpeg`;
+    req.file.filename = `city-${Date.now()}-${crypto.randomBytes(12).toString('hex')}.jpeg`;
     console.log(req.file.filename)
     console.log(req.file.buffer)
 
