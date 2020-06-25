@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
 const validator  = require('validator')
-
-
-const userSchena  = new mongoose.Schema({
+const bcrypt = require('bcryptjs')
+const userSchema  = new mongoose.Schema({
     name : {
         type: String,
         required : true
@@ -20,7 +19,8 @@ const userSchena  = new mongoose.Schema({
     },
     role : {
         type: String,
-        enum: ['admin','kostOwner','user']
+        enum: ['admin','kostOwner','user'],
+        default : 'user'
     },
     password : {
         type: String,
@@ -30,7 +30,14 @@ const userSchena  = new mongoose.Schema({
     },
     passwordConfirm : {
         type: String,
-        required : [true,'please confirm your password']
+        required : [true,'please confirm your password'],
+        validate : {
+            validator : function(el) {
+                return el === this.password
+            },
+            message: "password are not the same"
+        },
+        select: false
     },
     notelp:  {
         type: Number,
@@ -43,6 +50,19 @@ const userSchena  = new mongoose.Schema({
     passwordResetExpire : Date,
 })
 
-const User = mongoose.model('User',userSchena)
+
+userSchema.pre('save',async function(next) {
+    if(!this.isModified('password')) next();
+
+    this.password = await bcrypt.hash(this.password,12)
+    this.passwordConfirm = undefined
+
+    next()
+})
+userSchema.methods.correctPassword = async function(cadidatePassword,userPassword) {
+    return await bcrypt.compare(cadidatePassword,userPassword)
+    console.log(cadidatePassword,userPassword)
+}
+const User = mongoose.model('User',userSchema)
 
 module.exports = User

@@ -5,6 +5,10 @@ const morgan = require('morgan')
 const pug = require('pug')
 const connectDb =  require('./config/server')
 const path = require('path')
+const globalErorrHandler = require('./controller/errorController')
+const appError = require('./utils/appError')
+
+app.use(express.json({limit : '10kb'}))
 
 
 //LOAD CONFIG
@@ -38,9 +42,12 @@ const PORT = process.env.PORT || 5000
 //Routes
 app.use('/',require('./route/viewRouter'))
 app.use('/api/v1/users',require('./route/userRouter'))
-app.all('*',(req,res) => {
-    res.send('404')
+app.all('*',(req,res,next) => {
+    next(new appError(`Can't find ${req.originalUrl} on this Server`,404))
+
 })
 
+
+app.use(globalErorrHandler)
 
 app.listen(PORT,console.log(`SERVER RUNNING IN ${process.env.NODE_ENV} made on port ${PORT}`))

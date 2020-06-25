@@ -45,3 +45,15 @@ function showPassword(idName) {
 }
 
 
+
+$(window).scroll(function() {
+  if ($(document).scrollTop() > 50) {
+      $('.nav-modify').addClass('affix');
+      $('.nav-item').addClass('text-dark');
+      console.log("OK");
+  } else {
+      $('.nav-modify').removeClass('affix');
+      $('.nav-item').removeClass('text-dark');
+
+  }
+});
