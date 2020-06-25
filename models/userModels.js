@@ -48,6 +48,20 @@ const userSchema  = new mongoose.Schema({
     passwordChangeAt : Date,
     passwordResetToken : String,
     passwordResetExpire : Date,
+    passwordChangeAt : Date,
+    passwordResetToken : String,
+    passwordResetExpire : Date,
+    isActive : {
+        type : Boolean,
+        default : true,
+        select : false
+    },
+    isVerif : {
+        type: Boolean,
+        default :false
+    },
+    emailVerifyToken : String,
+    emailVerifyExpires : Date
 })
 
 

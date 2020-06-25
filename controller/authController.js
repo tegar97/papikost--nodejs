@@ -35,15 +35,24 @@ const createSendToken = (user,statusCode,res) => {
         })
 }
 exports.signup = catchAsync(async(req,res) => {
+
+        const verifyToken = crypto.randomBytes(32).toString('hex')
+
+        const emailVerifyToken  = crypto.createHash('sha256').update(verifyToken).digest('hex')
+
+        const emailVerifyExpires = Date.now() + 10 * 60 + 1000
+        console.log(emailVerifyExpires)
+
         const newUser = await User.create({
             name : req.body.name,
             email : req.body.email,
             password : req.body.password,
             passwordConfirm : req.body.passwordConfirm,
-            notelp: req.body.notelp
-    
+            notelp: req.body.notelp,
+            emailVerifyToken : emailVerifyToken,
+            emailVerifyExpires : emailVerifyExpires
         })
-        const url = `${req.protocol}`
+        const url  =`${req.protocol}://${req.get("host")}/verifyEmail/${verifyToken}`
         await new Email(newUser,url).sendWelcome()
         createSendToken(newUser,201,res)
         

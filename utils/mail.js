@@ -25,10 +25,11 @@ module.exports = class Email {
 
     async send(template,subject) {
         const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`,{
-            firstname : this.firstName,
+            firstName : this.firstName,
             url : this.url,
             subject
         })
+        console.log(this.firstname)
 
         const mailOptions  = {
             from : this.from,
@@ -42,7 +43,7 @@ module.exports = class Email {
     }
 
     async sendWelcome() {
-        await this.send('welcome', 'Welcome to the Natours Family!');
+        await this.send('welcome', 'SELAMAT DATANG PARA KOSTER!');
       }
 
 }
