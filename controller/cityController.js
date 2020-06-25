@@ -26,7 +26,7 @@ exports.uploadUserPhoto = upload.single('image')
 
 exports.resizePhoto = catchAsync(async(req,res,next) => {
     if(!req.file) return next();
-    req.file.filename = `city-${req.body.cityName}-${Date.now()}.jpeg`;
+    req.file.filename = `city-${req.params.id}-${Date.now()}.jpeg`;
     console.log(req.file.filename)
     console.log(req.file.buffer)
 
@@ -77,11 +77,13 @@ exports.updateCity  = catchAsync(async(req,res,next) => {
         })
     }else{
         const cityData = await City.findById({_id : req.params.id})
+        await fs.unlink(path.join(`public/img/city/${cityData.image}`))
         await cityData.update({
-            cityName : req.body.cityName,
-            cityProvince : req.body.cityProvince,
+            cityName : req.body.cityName || cityData.cityName,
+            cityProvince : req.body.cityProvince || cityData.cityProvince,
             image : req.file.filename
         })
+
         res.status(201).json({
             message : 'Success',
             data : {
