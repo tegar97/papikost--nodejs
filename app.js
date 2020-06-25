@@ -1,26 +1,46 @@
 const express = require('express')
 const app = express()
-const dotenv = require('dotenv');
-const morgan = require('morgan')
-const pug = require('pug')
 const connectDb =  require('./config/server')
 const path = require('path')
+//utils
 const globalErorrHandler = require('./controller/errorController')
 const appError = require('./utils/appError')
-const compression = require('compression')
+//library
+const mongoSanitize = require('express-mongo-sanitize')
+const pug = require('pug')
+const morgan = require('morgan')
 const helmet = require('helmet')
+const dotenv = require('dotenv');
+const xss = require('xss-clean')
+const limitAccess = require('express-rate-limit')
 
 
 
 
+
+
+//LIMIT DATA 10KB
 app.use(express.json({limit : '10kb'}))
-
+//helmet membantun untuk mengamankan aplikasi express kamu dengan cara setting various HTPP HEADERS
 app.use(helmet())
+//Mengatasi nosql query injection
+app.use(mongoSanitize())  
+//mengatasi  data html javascript 
+app.use(xss())
+//melimit pengunaan api agar terhindar dari serang ddos 
+const limiter = limitAccess({
+    max : 1000, //limit 1000 akses 
+    windowMs : 60  * 60 * 1000 ,// 1 jam
+    message : 'To many Request from this ip,please try again in a hour'
+})
+app.use('/api',limiter)
+
+
 
 //LOAD CONFIG
 dotenv.config({path: './config/config.env'})
 
-
+//function untuk konek ke database
 connectDb()
 
 
