@@ -35,13 +35,13 @@ const createSendToken = (user,statusCode,res) => {
         })
 }
 exports.signup = catchAsync(async(req,res) => {
-
+        //1 membuat huruf random debgab croyto
         const verifyToken = crypto.randomBytes(32).toString('hex')
-
+        //2.Menecrypt huruf tadi dengan sha256 untuk disimpan ke database
         const emailVerifyToken  = crypto.createHash('sha256').update(verifyToken).digest('hex')
-
-        const emailVerifyExpires = Date.now() + 10 * 60 + 1000
-        console.log(emailVerifyExpires)
+        //set masa aktif token 
+        const emailVerifyExpires = Date.now() + 10 * 60 * 1000 //10 menit
+    
 
         const newUser = await User.create({
             name : req.body.name,
@@ -52,7 +52,7 @@ exports.signup = catchAsync(async(req,res) => {
             emailVerifyToken : emailVerifyToken,
             emailVerifyExpires : emailVerifyExpires
         })
-        const url  =`${req.protocol}://${req.get("host")}/verifyEmail/${verifyToken}`
+        const url  =`${req.protocol}://${req.get("host")}/users/verifyEmail/${verifyToken}`
         await new Email(newUser,url).sendWelcome()
         createSendToken(newUser,201,res)
         
@@ -86,14 +86,37 @@ exports.login = catchAsync(async(req,res,next) => {
         //jika benar maka akan mengirim token
         createSendToken(user,201,res)
 })
-exports.forgotPassword = catchAsync(async(req,res,next) =>{
-    const user = await User.findOne({email : req.body.email})
+
+
+exports.verifyEmail = catchAsync(async(req,res,next) => {
+    const token = req.params.token
+    console.log(token)
+    const hashedToken = crypto.createHash('sha256').update(token).digest('hex') 
+    console.log(hashedToken)
+
+    const user = await User.findOne({emailVerifyToken : hashedToken ,emailVerifyExpires :{$gt: Date.now()}})
     if(!user) {
-        return next(new AppError('THERE IS NO USER WITH THAT EMAIL ADRESS',400))
+        return next(new AppError('token tidak ditemukan '))
     }
-    
+    user.isVerif = true
+    user.emailVerifToken = undefined;
+    user.emailVerifExpire = undefined
+    await user.save()
 
+    if(process.env.NODE_ENV == 'development') {
+        res.status(200).json({
+            message : 'email verify'
+        })
+    }else if(process.env.NODE_ENV == 'production'){
+        res.redirect('/')
+    //     if(req.cookies.jwt && req.cookies.jwt !== 'loggedout') {
+    //         return res.redirect('/me')
+    //   }else if(!req.cookies.jwt && req.cookies.jwt == 'loggedout'){
+    //         return res.redirect('/login')
+    //   }
+   
+    }
 
-
+  
 
 })

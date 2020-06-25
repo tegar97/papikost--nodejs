@@ -5,7 +5,8 @@ const authController = require('./../controller/authController')
 
 router.post('/signup',authController.signup)
 router.post('/login',authController.login)
-router.post('/forgotPassword',authController.forgotPassword)
+router.get('/verifyEmail/:token',authController.verifyEmail)
+
 
 
 module.exports = router

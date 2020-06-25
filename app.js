@@ -7,9 +7,15 @@ const connectDb =  require('./config/server')
 const path = require('path')
 const globalErorrHandler = require('./controller/errorController')
 const appError = require('./utils/appError')
+const compression = require('compression')
+const helmet = require('helmet')
+
+
+
 
 app.use(express.json({limit : '10kb'}))
 
+app.use(helmet())
 
 //LOAD CONFIG
 dotenv.config({path: './config/config.env'})
@@ -42,9 +48,10 @@ const PORT = process.env.PORT || 5000
 //Routes
 app.use('/',require('./route/viewRouter'))
 app.use('/api/v1/users',require('./route/userRouter'))
+app.use('/api/v1/city',require('./route/cityRouter'))
+
 app.all('*',(req,res,next) => {
     next(new appError(`Can't find ${req.originalUrl} on this Server`,404))
-
 })
 
 

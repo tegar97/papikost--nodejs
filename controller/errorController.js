@@ -41,7 +41,7 @@ const sendErrorProd = (err,req,res) => {
             message : err.message
         })
     }
-    res.status (err.statusCode).render('errpr',{
+    res.status (err.statusCode).render('error',{
         title: 'Ups something error hire',
         message : 'try again later'
     })
