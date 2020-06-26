@@ -11,7 +11,7 @@ block content
     main
       section#popular.city-kost.mt-5
         .text-center
-          h2.heading-secondary KOTA JOGJA
+          h2.heading-secondary= 'Kota ' + cityData.cityName
           br
           span.heading-tertiary Kita Menemuka 100 kost yang siap ditingali 
         .div(style='border-bottom: 1px solid black;')
@@ -23,7 +23,7 @@ block content
                   .row.mt-5
                    a(href="kost/kost-udin")
                       .col-lg-6
-                        img.card__img-type-3(src='./assets/kost1.jpg', alt='')
+                        img.card__img-type-3(src='/assets/kost1.jpg', alt='')
                       .col-lg-5
                         .card__room--lbl
                           label.card__room--lbl-genreRuangan Booking Langsung 
@@ -34,9 +34,9 @@ block content
                             h3.card__room--title-main(style="cursor : pointer") KOST UDIN HOUSE JOGJA 
                         .card__room-info
                           i.card__room-info--icon.icon-basic-map.text-success
-                          span.card__room-info--area
-                            i.fas.fa-map-marker-alt
-                            |  Jogja
+                          span.card__room-info--area.row.d-flex
+                            i.fas.fa-map-marker-alt.ml-3.mt-1
+                            p.ml-3=  cityData.cityName 
                           br
                           span.card--room-info--area-detail
                             | K.Mandi Dalam | free wifi | akses 24jam

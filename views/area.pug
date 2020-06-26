@@ -11,7 +11,7 @@ block content
                   .card
                     img.card-img-top.card__img-type-2(src=`/img/city/${city.image}`, alt=`${city.cityName}`)
                     .card__text-box
-                      a.card__link(href='/area-detail')
+                      a.card__link(href=`area-detail/${city.slug}`)
                         h3.card__text-box--title-2= city.cityName 
                       span.text-center.card__text-box--city= city.cityProvince
      

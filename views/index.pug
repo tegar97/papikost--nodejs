@@ -107,13 +107,14 @@ html(lang='en')
           // versi screen lg and xl
           .swiper-container.d-none.d-sm-none.d-md-none.d-lg-block.d-xl-block(data-aos='fade-up')
             .swiper-wrapper
+             each city in cityData
               .swiper-slide.pl-5
-                .card
-                  a(href="http://localhost:3000/area-detail")
-                    img.card-img-top.card__img-type-2(src='./assets/bandung.jpg', alt='ITB')
-                    .card__text-box
-                      h3.card__text-box--title-2  Bandung 
-                      span.text-center.card__text-box--city Jawa barat
+                  .card
+                    a(href=`/area-detail/${city.slug}`)
+                      img.card-img-top.card__img-type-2(src=`img/city/${city.image}`, alt='ITB')
+                      .card__text-box
+                        h3.card__text-box--title-2= city.cityName
+                        span.text-center.card__text-box--city= city.cityProvince
               
             .swiper-button-next
             .swiper-button-prev
