@@ -42,66 +42,7 @@ html(lang='en')
     main
       section.section-university-city.mt-5
         .container
-          .text-box
-            h2.heading-secondary Dimana Kampus Kamu ?
-          // versi screen lg and xl
-          .swiper-container.d-none.d-sm-none.d-md-none.d-lg-block.d-xl-block(data-aos='fade-up')
-            .swiper-wrapper
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/ugm.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  UGM 
-                    span.text-center.card__text-box--city Jawa barat
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/itb.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  ITB 
-                    span.text-center.card__text-box--city Kota bandung
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/itbJatinangor.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  ITB 
-                    span.text-center.card__text-box--city Sumedang,jatinganor
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/ui.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  UI 
-                    span.text-center.card__text-box--city Kota Depok
-            .swiper-button-next
-            .swiper-button-prev
-          // versi screen sm and md
-          .swiper-container-mobile.d-lg-none.d-xl-none(data-aos='fade-up')
-            .swiper-wrapper
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/ugm.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  UGM 
-                    span.text-center.card__text-box--city Jawa barat
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/itb.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  ITB 
-                    span.text-center.card__text-box--city Kota bandung
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/itbJatinangor.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  ITB 
-                    span.text-center.card__text-box--city Sumedang,jatinganor
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/ui.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  UI 
-                    span.text-center.card__text-box--city Kota Depok
-            .swiper-button-next
-            .swiper-button-prev
+  
           .text-box
             h2.heading-secondary Atau Kota Kamu ?
           // versi screen lg and xl
@@ -119,32 +60,18 @@ html(lang='en')
             .swiper-button-next
             .swiper-button-prev
           // versi screen sm and md
-          .swiper-container-mobile.d-lg-none.d-xl-none(data-aos='fade-up')
+          .swiper-container-mobile.d-block.d-sm-block.d-md-block.d-lg-none.d-xl-none(data-aos='fade-up')
             .swiper-wrapper
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/ugm.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  UGM 
-                    span.text-center.card__text-box--city Jawa barat
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/itb.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  ITB 
-                    span.text-center.card__text-box--city Kota bandung
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/itbJatinangor.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  ITB 
-                    span.text-center.card__text-box--city Sumedang,jatinganor
-              .swiper-slide.pl-5
-                .card
-                  img.card-img-top.card__img-type-2(src='./assets/ui.jpg', alt='ITB')
-                  .card__text-box
-                    h3.card__text-box--title-2  UI 
-                    span.text-center.card__text-box--city Kota Depok
+              each city in cityData
+                .swiper-slide.pl-5
+                  .card
+                    a(href=`/area-detail/${city.slug}`)
+                      img.card-img-top.card__img-type-2(src=`img/city/${city.image}`, alt='ITB')
+                      .card__text-box
+                        h3.card__text-box--title-2= city.cityName
+                        span.text-center.card__text-box--city= city.cityProvince
+              
+              
             .swiper-button-next
             .swiper-button-prev
       section.section-all-kost.mb-5

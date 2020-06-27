@@ -34,7 +34,7 @@ exports.resizePhoto = catchAsync(async(req,res,next) => {
     next()
 })
 
-exports.getCity = catchAsync(async(req,res) => {
+exports.getAllCity = catchAsync(async(req,res) => {
     const cityData =  await City.find()
 
 
@@ -45,12 +45,20 @@ exports.getCity = catchAsync(async(req,res) => {
     })
 
 })
+exports.getCity = catchAsync(async(req,res) => {
+    const cityData = await City.find({_id : req.params.id}).populate({path : 'Kost',select:'-__v'})
 
+    res.status(200).json({
+        message : 'success',
+        data : cityData
+    })
+})
 exports.addCity = catchAsync(async(req,res,next)  =>{
     const cityData = await City.create({
         cityName : req.body.cityName,
         cityProvince : req.body.cityProvince,
-        image : req.file.filename
+        image : req.file.filename,
+        Kost : req.body.Kost
 
     })
  

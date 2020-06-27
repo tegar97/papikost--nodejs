@@ -9,7 +9,7 @@ const kostSchema = new mongoose.Schema({
         required : [true,'kost must have name'],
         unique : true,
         trim : true,
-        validate : validator.isAlpha
+     
     },
     slug: String,
     roomAvailable : Number,
@@ -30,16 +30,20 @@ const kostSchema = new mongoose.Schema({
 
         },
         coordinates : [Number],
-        address : String,
-        description : String,
+        address : String
         
     },
     imageCover :  {
-        type  : String,
-        required : true
+        type  : String
     },
     images  : [String],
     roomSize : String, 
+    roomGender : {
+        type: String,
+        enum : ['pria','perempuan','campur'],
+        default : 'campur'
+
+    },
     facilities : {
         type : ObjectId,
         ref : 'Facilities'
@@ -49,8 +53,7 @@ const kostSchema = new mongoose.Schema({
         type: ObjectId,
         ref : 'Reviews'
     }
-
-
-
-
 })
+const Kost = mongoose.model('Kost',kostSchema)
+
+module.exports = Kost

@@ -12,10 +12,10 @@ const citySchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    kostId : {
+    Kost: [{
         type : ObjectId,
         ref : 'Kost'
-    },
+    }],
     image : {
         type: String,
         required: true
@@ -26,6 +26,7 @@ citySchema.pre('save',function(next) {
     this.slug = slugify(this.cityName,{lower: true})
     next()
 })
+
 const City = mongoose.model('City',citySchema)
 
 module.exports = City

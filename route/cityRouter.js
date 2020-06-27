@@ -4,11 +4,12 @@ const cityController = require('./../controller/cityController')
 
 router
     .route('/')
-    .get(cityController.getCity)
+    .get(cityController.getAllCity)
     .post(cityController.uploadUserPhoto,cityController.resizePhoto,cityController.addCity)
 router
     .route('/:id')
-    .put(cityController.uploadUserPhoto,cityController.resizePhoto,cityController.updateCity)
+    .get(cityController.getCity)
+    .patch(cityController.uploadUserPhoto,cityController.resizePhoto,cityController.updateCity)
     .delete(cityController.deleteCity)
 
 module.exports  = router

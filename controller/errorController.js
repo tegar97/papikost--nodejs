@@ -11,9 +11,10 @@ const sendErrorDev = (err,req,res) =>{
         })
     //UNTUK HALAMAN VIEW
     }else{
-        res.status(err.statusCode).render('error', {
+        res.status(err.statusCode).json({
             title  : 'ups something error hire',
             msg: err.message
+           
         })
 
     }

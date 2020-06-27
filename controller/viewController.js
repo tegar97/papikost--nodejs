@@ -20,8 +20,8 @@ exports.getArea = async(req,res) => {
 }
 
 exports.getAreaDetail = async(req,res) => {
-    const cityData = await City.findOne({slug : req.params.slug})
-    console.log(cityData.cityName)
+    const cityData = await City.findOne({slug : req.params.slug}).populate({path: 'Kost',select : '-__v'})
+    
     res.status(200).render('areaDetail',{
         title : 'DETAIL AREA',
         cityData

@@ -2,7 +2,7 @@ extends base
 
 block append head
  
-  script(src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js')
+ 
   link(href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet')
   
 
@@ -13,33 +13,35 @@ block content
         .text-center
           h2.heading-secondary= 'Kota ' + cityData.cityName
           br
-          span.heading-tertiary Kita Menemuka 100 kost yang siap ditingali 
+          span.heading-tertiary= `kita menemukan ${cityData.Kost.length} kost yang siap ditempati `
         .div(style='border-bottom: 1px solid black;')
         .row
           .col-12.col-lg-6.p-0.d-block
             .row
+             each Kost in cityData.Kost
               .col-lg-12
                 .card
                   .row.mt-5
                    a(href="kost/kost-udin")
                       .col-lg-6
-                        img.card__img-type-3(src='/assets/kost1.jpg', alt='')
+                        img.card__img-type-3(src=`/img/kost/imageCover/${Kost.imageCover}`, alt='')
                       .col-lg-5
                         .card__room--lbl
                           label.card__room--lbl-genreRuangan Booking Langsung 
                           span.pl-3.pr-3 |
-                          label.card__room--lbl-infoRuangan.card__room--lbl-infoRuangan--blue Pria
+                          label.card__room--lbl-infoRuangan.card__room--lbl-infoRuangan--blue= Kost.roomGender
                         .card__room--title
                           a(href='kost/kost-udin')
-                            h3.card__room--title-main(style="cursor : pointer") KOST UDIN HOUSE JOGJA 
+                            h3.card__room--title-main(style="cursor : pointer")= Kost.name
                         .card__room-info
                           i.card__room-info--icon.icon-basic-map.text-success
                           span.card__room-info--area.row.d-flex
                             i.fas.fa-map-marker-alt.ml-3.mt-1
-                            p.ml-3=  cityData.cityName 
+                            p.ml-3= cityData.cityName
                           br
                           span.card--room-info--area-detail
-                            | K.Mandi Dalam | free wifi | akses 24jam
+                             h5.text-danger= `SISA ${Kost.roomAvailable} KAMAR LAGI`
+                            
                         .row
                           .col-lg-6
                             .u-margin-top-big
@@ -47,22 +49,12 @@ block content
                               |  4.5
                           .col-lg-6
                             .u-margin-top-big
-                              h4 Rp 2.400.000 / bulan
-            
-            nav(aria-label='Page navigation example')
-              ul.pagination.pagination-lg.mt-5
-                li.page-item
-                  a.page-link(href='#') Previous
-                li.page-item
-                  a.page-link(href='#') 1
-                li.page-item
-                  a.page-link(href='#') 2
-                li.page-item
-                  a.page-link(href='#') 3
-                li.page-item
-                  a.page-link(href='#') Next
+                              h4= `$${Kost.price}/bulan`
+                             
           .d-sm-none.d-md-none.d-lg-block.col-lg-6.mt-5
-            #map(style='width: 600px; height: 700px;')
+              #map(style='width: 600px; height: 700px;' data-locations=`${JSON.stringify(cityData.Kost)}`)
+      
+       
         .row
-
+         script(src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js')
          script(src='/js/mapbox.js')
