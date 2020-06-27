@@ -20,7 +20,21 @@ locations.forEach(loc => {
         anchor : 'bottom'
     }).setLngLat(mapData.coordinates).addTo(map)
 
+    //add popoup
+    new mapboxgl.Popup({
+        offset: 30
+    }).setLngLat(mapData.coordinates).setHTML(`<a class="primary-text" href='${mapData.slug}'>nama :${loc.name}</a><p>alamat :${mapData.address}</p> <p>harga : $${loc.price}/bulan</p>`).addTo(map)
+
     bounds.extend(mapData.coordinates)
+
+    
 })
 
-map.fitBounds(bounds);
+map.fitBounds(bounds,{
+    padding :{
+        top : 200,
+        bottom : 200,
+        left: 100,
+        right: 100
+    }
+});
