@@ -1,4 +1,5 @@
 const City = require('./../models/cityModels')
+const Kost = require('../models/kostModels')
 
 exports.getLanding = async(req,res) => {
     const cityData = await City.find()
@@ -30,8 +31,15 @@ exports.getAreaDetail = async(req,res) => {
 }
 
 exports.getkostDetail = async(req,res) => {
+    const kostData = await Kost.findOne({slug : req.params.slug}).populate({path : 'facilities',select: '-__v'})
+    const kostDataDetail = kostData.facilities
+    for(let i = 0; i < kostDataDetail.length; i++) {
+        console.log(kostDataDetail[i].iconName)
+    }
+    
     res.status(200).render('kostDetail',{
         title : 'KOST PAK UDIN',
+        kostData
      
     })
 }

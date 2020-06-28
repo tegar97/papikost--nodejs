@@ -44,15 +44,19 @@ const kostSchema = new mongoose.Schema({
         default : 'campur'
 
     },
-    facilities : {
+    facilities : [{
         type : ObjectId,
-        ref : 'Facilities'
+        ref : 'Facility'
 
-    },
+    }],
     reviews : {
         type: ObjectId,
         ref : 'Reviews'
     }
+})
+kostSchema.pre('save',function(next){
+    this.slug  = slugify(this.name,{lower : true})
+    next()
 })
 const Kost = mongoose.model('Kost',kostSchema)
 

@@ -1,7 +1,7 @@
 extends base
 block append head
  
-  script(src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js')
+
   link(href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet')
 
 block content
@@ -11,15 +11,15 @@ block content
           .container
             .row
               .col-lg-8(data-aos='zoom-in')
-                img(src='/assets/kost1.jpg', alt='gambar 1', width='752', height='501')
+                img(src=`/img/kost/images/${kostData.images[0]}`, alt='gambar 1', width='752', height='501')
               .col-lg-4(data-aos='zoom-in')
                 .row
                   .col-lg-12.pl-5
-                    img(src='/assets/kost2.jpg', alt='gambar 2', width='372', height='248')
+                    img(src=`/img/kost/images/${kostData.images[1]}` alt='gambar 2', width='372', height='248')
                   .col-lg-12.pl-5.pt-3
-                    img(src='/assets/kost3.jpg', alt='gambar 3', width='372', height='248')
+                    img(src=`/img/kost/images/${kostData.images[2]}`, alt='gambar 3', width='372', height='248')
         .container.mt-5
-          h1.heading-secondary(data-aos='fade-up') KOST AGUNG SLAMET
+          h1.heading-secondary(data-aos='fade-up')= kostData.name
           .row
             .col-lg-8(data-aos='zoom-in')
               nav
@@ -31,29 +31,22 @@ block content
                   a#nav-contact-tab.nav-item.nav-link(data-toggle='tab', href='#nav-maps', role='tab', aria-controls='nav-contact', aria-selected='false') Reviews
               #nav-tabContent.tab-content
                 #nav-deskripsi.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='nav-home-tab')
-                  p.tab-content-paragraph
-                    | Kos strategis SANGAT DEKAT dengan kampus ternama Unpad (9,6km) • IPDN (2,0km) • ITB Jatinangor (7,0km) • pusat perbelanjaan Jatinangor Town Square (7,1km) • rumah sakit RS AMC (5,6km) • pusat perbelanjaan jatinangor town square (7,1km). Transportasi publik di sekitar kos taksi dan ojek online.
+                  p.tab-content-paragraph= kostData.deskripsi
                 #nav-fasilitas.tab-pane.fade(role='tabpanel', aria-labelledby='nav-profile-tab')
                   .row.ml-3
-                    .col-lg-3
-                      .row
-                        i.fas.fa-shower.huge-font-size.primary-text
-                        p.medium-font-size.pl-3 Kamar Mandi
-                    .col-lg-3
-                      .row
-                        i.fas.fa-wifi.huge-font-size.primary-text
-                        p.medium-font-size.pl-3 Free Wifi 
-                    .col-lg-3
-                      .row
-                        i.fas.fa-wind.huge-font-size.primary-text
-                        p.medium-font-size.pl-3 Free Wifi
+                    each facilities in kostData.facilities
+                      .col-lg-3
+                        .row
+                          i.fas.fa-shower.huge-font-size.primary-text
+                          p.medium-font-size.pl-3= facilities.iconName
+                  
                 #nav-luas.tab-pane.fade(role='tabpanel', aria-labelledby='nav-contact-tab')
                   .row.ml-3
                     i.fas.fa-home.huge-font-size.primary-text
-                    p.pl-3.medium-font-size 3x4
+                    p.pl-3.medium-font-size= kostData.roomSize
                 #nav-lokasi.tab-pane.fade(role='tabpanel', aria-labelledby='nav-contact-tab')
                   .row
-                    #map(style='width: 100% !important; height: 100%;')
+                    #map(style='width: 100% !important; height: 100%;' data-locations=`${JSON.stringify(kostData.location)}`)
                 #nav-maps.tab-pane.fade(role='tabpanel', aria-labelledby='nav-contact-tab')
                   .row.p-3
                     .col-lg-4.pb-5
@@ -148,23 +141,24 @@ block content
                       .col-lg-7
                         h4.medium-font-size.text-dark Per bulan
                       .col-lg-5
-                        h4.medium-font-size.text-dark Rp 1.350.000
+                        h4.medium-font-size.text-dark=  `$${kostData.price}`
                     .row.mt-4.border-bottom
                       .col-lg-7
                         h4.medium-font-size.text-dark Per 3 bulan
                       .col-lg-5
-                        h4.medium-font-size.text-dark Rp 4.350.000
+                        h4.medium-font-size.text-dark= `$${kostData.price *3}`
                     .row.mt-4.border-bottom
                       .col-lg-7
                         h4.medium-font-size.text-dark Per Tahun
                       .col-lg-5
-                        h4.medium-font-size.text-dark Rp 16.350.000
+                        h4.medium-font-size.text-dark= `$${kostData.price * 12}`
               .col-lg-12.mt-3
                 .card.shadow.p-4
                   .row
                     .col-lg-12
                       button.w-100.btn.primary-btn ORDER NOW
-            script(src='/js/mapbox.js')
+            script(src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js')
+            script(src='/js/mapbox2.js')
 
 
     

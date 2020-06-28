@@ -72,7 +72,7 @@ exports.getAllkost = catchAsync(async(req,res) => {
 
 
 exports.getKost = catchAsync(async(req,res) => {
-    const kostData = await Kost.findOne({_id : req.params.id})
+    const kostData = await Kost.findOne({_id : req.params.id}).populate({path : 'facilities',select: '-__v'})
 
     res.status(200).json({
         message : 'Success',
@@ -95,7 +95,8 @@ exports.addKost = catchAsync(async(req,res) => {
         imageCover : req.body.imageCover,
         images : req.body.images,
         roomsize : '3x4',
-        roomGender : req.body.roomGender
+        roomGender : req.body.roomGender,
+        facilities : req.body.facilities
     })
     console.log(req.body.imageCover)
     res.status(200).json({

@@ -22,7 +22,7 @@ block content
               .col-lg-12
                 .card
                   .row.mt-5
-                   a(href="kost/kost-udin")
+                   a(href=`http://localhost:3000/kost/${Kost.slug}`)
                       .col-lg-6
                         img.card__img-type-3(src=`/img/kost/imageCover/${Kost.imageCover}`, alt='')
                       .col-lg-5
@@ -31,7 +31,7 @@ block content
                           span.pl-3.pr-3 |
                           label.card__room--lbl-infoRuangan.card__room--lbl-infoRuangan--blue= Kost.roomGender
                         .card__room--title
-                          a(href='kost/kost-udin')
+                          a(href=`http://localhost:3000/kost/${Kost.slug}`)
                             h3.card__room--title-main(style="cursor : pointer")= Kost.name
                         .card__room-info
                           i.card__room-info--icon.icon-basic-map.text-success

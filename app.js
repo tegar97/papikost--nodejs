@@ -70,6 +70,7 @@ app.use('/',require('./route/viewRouter'))
 app.use('/api/v1/users',require('./route/userRouter'))
 app.use('/api/v1/city',require('./route/cityRouter'))
 app.use('/api/v1/kost',require('./route/kostRouter'))
+app.use('/api/v1/facility',require('./route/facilityRouter'))
 app.all('*',(req,res,next) => {
     next(new appError(`Can't find ${req.originalUrl} on this Server`,404))
 })

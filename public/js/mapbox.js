@@ -1,5 +1,8 @@
 const mapBox = document.getElementById('map');
+
 const locations = JSON.parse(mapBox.dataset.locations);
+console.log(locations)
+
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidGVnYXI5NyIsImEiOiJja2E5b3RsdXkwazRnMnFxZnhqa2l2bXZuIn0.XMtCfzzp6x1iZkFEuWPADA';
@@ -23,12 +26,13 @@ locations.forEach(loc => {
     //add popoup
     new mapboxgl.Popup({
         offset: 30
-    }).setLngLat(mapData.coordinates).setHTML(`<a class="primary-text" href='${mapData.slug}'>nama :${loc.name}</a><p>alamat :${mapData.address}</p> <p>harga : $${loc.price}/bulan</p>`).addTo(map)
+    }).setLngLat(mapData.coordinates).setHTML(`<a class="primary-text" href='http://localhost:3000/kost/${loc.slug}'>nama :${loc.name}</a><p>alamat :${mapData.address}</p> <p>harga : $${loc.price}/bulan</p>`).addTo(map)
 
     bounds.extend(mapData.coordinates)
 
     
 })
+map.addControl(new mapboxgl.FullscreenControl());
 
 map.fitBounds(bounds,{
     padding :{
@@ -38,3 +42,5 @@ map.fitBounds(bounds,{
         right: 100
     }
 });
+
+
