@@ -1,15 +1,15 @@
 const express = require('express')
 const router = express.Router()
 const facilityController = require('../controller/facilityController')
-
+const authController =require('./../controller/authController')
 router
     .route('/')
     .get(facilityController.getAllFacility)
-    .post(facilityController.addFacility)
+    .post(authController.protect,authController.allowFor('admin'),facilityController.addFacility)
 
 router
     .route('/:id')
     .get(facilityController.getFacility)
-    .patch(facilityController.updateFacility)
-    .delete(facilityController.deleteFacility)
+    .patch(authController.protect,authController.allowFor('admin'),facilityController.updateFacility)
+    .delete(authController.protect,authController.allowFor('admin'),facilityController.deleteFacility)
 module.exports = router

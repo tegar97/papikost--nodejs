@@ -38,6 +38,7 @@ exports.getAllCity = catchAsync(async(req,res) => {
     const cityData =  await City.find()
 
 
+
     res.status(200).json({
         message : 'Success',
         total : cityData.length + ' city found',
@@ -61,6 +62,7 @@ exports.addCity = catchAsync(async(req,res,next)  =>{
         Kost : req.body.Kost
 
     })
+    console.log(req.user)
  
     res.status(201).json({
         message : 'Success',

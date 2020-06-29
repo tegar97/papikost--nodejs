@@ -52,6 +52,7 @@ exports.signup = catchAsync(async(req,res,next) => {
             password : req.body.password,
             passwordConfirm : req.body.passwordConfirm,
             notelp: req.body.notelp,
+            role : req.body.role,
             emailVerifyToken : emailVerifyToken,
             emailVerifyExpires : emailVerifyExpires
         })
@@ -115,14 +116,16 @@ exports.protect = catchAsync(async(req,res,next) =>{
     res.locals.user = currentUser;
     next()
 })
-exports.restrictTo = (...role) => {
+exports.allowFor = (...role) =>{
     return (req,res,next) =>{
-        //jika role tidak sama dengan yang dimasukan di parameter maka muncul kan pesan Yo dont have permission
         if(!role.includes(req.user.role)) {
-            new AppError('YO DONT HAVE PERMISSION',403)
-            next()
-        }
+            return next(
+                new AppError('You dont have permission ',403)
+            )
+
+        }    next()
     }
+
 }
 exports.verifyEmail = catchAsync(async(req,res,next) => {
     const token = req.params.token

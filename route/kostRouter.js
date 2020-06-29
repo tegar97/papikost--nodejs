@@ -1,15 +1,15 @@
 const express =require('express')
 const router = express.Router()
 const kostController = require('./../controller/kostController')
-
+const authController = require('./../controller/authController')
 router
     .route('/')
     .get(kostController.getAllkost)
-    .post(kostController.uploadKostImage,kostController.resizeTourImage,kostController.addKost)
+    .post(authController.protect,authController.allowFor('admin'),kostController.uploadKostImage,kostController.resizeTourImage,kostController.addKost)
 
 router
     .route('/:id')
     .get(kostController.getKost)
-    .patch(kostController.uploadKostImage,kostController.resizeTourImage,kostController.updateKost)
-    .delete(kostController.deleteKost)
+    .patch(authController.protect,authController.allowFor('admin'),kostController.uploadKostImage,kostController.resizeTourImage,kostController.updateKost)
+    .delete(authController.protect,authController.allowFor('admin'),kostController.deleteKost)
 module.exports = router
