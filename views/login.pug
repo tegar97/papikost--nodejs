@@ -8,14 +8,14 @@ block content
       .login-form.mt-5
         .row.mt-5
           .col-lg-5
-            form.form(action='')
+            form.form.form-login
               h1.heading-secondary Sudah Punya Akun ? 
               h2.heading-tertiary.mt-2 Login dengan Email dan Password Kamu
               .form__group
-                input#name.form__input(type='email', placeholder='Email')
+                input#emailLogin.form__input(type='email', placeholder='Email' name="email")
                 label.form__label(for='email') Pastikan Email Asli yah
               .form__group
-                input#password.password.form__input(type='password', placeholder='Password ')
+                input#passwordLogin.password.form__input(type='password', placeholder='•••••••• ' name="password")
                 label.form__label(for='email') Password
               .form__radio-group
                 input#large.form__radio-input(type='checkbox', name='size', onclick="showPassword('password')")
@@ -36,7 +36,7 @@ block content
                 label.form__label(for='notelp')
                   span.text-danger PASTIKAN NOMER KAMU ! BUKAN NOMER MANTAN
               .form__group
-                input#name.form__input(type='email', placeholder='Email Kamu')
+                input#email.form__input(type='email', placeholder='Email Kamu')
                 label.form__label(for='email') pastikan email aktif
               .form__group
                 input#passwordRegister.password.form__input(type='password', placeholder='Password')
@@ -50,6 +50,7 @@ block content
         
               .form__group.u-margin.mt-5
                 button.btn.primary-btn.medium-font-size.pb-3.w-100(type='submit') REGISTER 
-
+    script(src='/js/login.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js')
         
 

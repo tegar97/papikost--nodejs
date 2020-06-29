@@ -13,7 +13,7 @@ const helmet = require('helmet')
 const dotenv = require('dotenv');
 const xss = require('xss-clean')
 const limitAccess = require('express-rate-limit')
-
+const cookieParser = require('cookie-parser')
 
 
 
@@ -21,12 +21,17 @@ const limitAccess = require('express-rate-limit')
 
 //LIMIT DATA 10KB
 app.use(express.json({limit : '10kb'}))
+app.use(cookieParser())
 //helmet membantun untuk mengamankan aplikasi express kamu dengan cara setting various HTPP HEADERS
 app.use(helmet())
 //Mengatasi nosql query injection
 app.use(mongoSanitize())  
 //mengatasi  data html javascript 
 app.use(xss())
+// app.use((req,res,next) =>{
+//     console.log(req.cookies)
+//     next()
+// })
 //melimit pengunaan api agar terhindar dari serang ddos 
 const limiter = limitAccess({
     max : 1000, //limit 1000 akses 

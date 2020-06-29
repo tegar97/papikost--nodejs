@@ -37,7 +37,7 @@ block content
                     each facilities in kostData.facilities
                       .col-lg-3
                         .row
-                          i.fas.fa-shower.huge-font-size.primary-text
+                          i(class=`${facilities.iconCode} huge-font-size primary-text`)
                           p.medium-font-size.pl-3= facilities.iconName
                   
                 #nav-luas.tab-pane.fade(role='tabpanel', aria-labelledby='nav-contact-tab')
