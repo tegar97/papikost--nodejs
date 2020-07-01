@@ -63,6 +63,8 @@ exports.resizeTourImage = catchAsync(async(req,res,next) => {
 exports.getAllkost = catchAsync(async(req,res) => {
     const kostData = await Kost.find()
 
+
+
     res.status(200).json({
         message : 'succes',
         totalKost : kostData.length,
